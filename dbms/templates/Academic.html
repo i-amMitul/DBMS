@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> Academic Department</h1>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">GPA Criteria</th>
+        <th scope="col">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in div1: %}
+
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>1</td>
+            <td>>=9.0</td>
+            <td>{{row[0]}}</td>
+            
+        </tr>
+        {% endfor %}
+        {% for row in div2: %}
+
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>2</td>
+            <td>>=7.5 and <span>&#60;</span>9.0 </td>
+            <td>{{row[0]}}</td>
+            
+        </tr>
+        {% endfor %}   
+        {% for row in div3: %}
+
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>3</td>
+            <td><span>&#60;</span>7.5</td>
+            <td>{{row[0]}}</td>
+            
+        </tr>
+        {% endfor %}        
+    </tbody>
+</table>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Update</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Show</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Profile</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h1>Update GPA</h1>
+        <form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+            <div class="input-field">
+                <select name="operation" id="operation">
+                    <!-- <option value="">designation</option> -->
+                    <option value="Update">Update</option>
+                    <option value="Delete">Delete</option>
+                    <!-- <option value="Male"></option> -->
+                </select>
+                <input type="number" name="rollno" id="rollno" placeholder="rollno" class="mx-3">
+                <input type="number" name="gpa" id="gpa" placeholder="gpa">
+            </div>
+
+            <button type="submit" name="Academic-submit">UPDATE GPA</button>
+            
+        </form>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <h1>SHOW STUDENT DETAILS</h1>
+        <form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+            <div class="input-field">
+                <select name="operation2" id="operation2">
+                    <!-- <option value="">designation</option> -->
+                    <option value="Any">RollNo</option>
+                    {% for row in roll_calls: %}
+                        <option value={{row}}>{{row}}</option>
+                    {% endfor %}
+                    
+                    <!-- <option value="Male"></option> -->
+                </select>
+            </div>
+            <button type="submit" name="Search-submit">Search</button>
+            
+        </form>
+
+        {% if studentDetails %}
+        <table class="table  table-striped">
+            <thead>
+            <tr>
+                <th scope="col">RollNo</th>
+                <th scope="col">UserID</th>
+                <th scope="col">ParentId</th>
+                <th scope="col">Degree</th>
+                <th scope="col">Batch</th>
+                <th scope="col">Major</th>
+                <th scope="col">GPA</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in studentDetails: %}
+
+                <tr>
+                    <!-- <th scope="row">1</th> -->
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="table-responsive shadow rounded">
+            <table class="table">
+                <tbody>
+                    {% for k,v in user.items() %}
+                    <tr>                    
+                            <th>{{k}}</th>
+                            <td>{{v}}</td>    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

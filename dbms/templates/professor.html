@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2> Prof Quries</h2>
+<h1>UPDATE EDUCATION</h1>
+<div class="container">
+
+    <form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+        <div class="input-field">
+            <input type="number" name="professorID" id="professorID" placeholder="professorID">
+            <input type="number" name="educationID" id="educationID" placeholder="educationID" class="mx-3">
+            <select name="operation" id="operation">
+                <!-- <option value="">designation</option> -->
+                <option value="Insert">Insert</option>
+                <option value="Update">Update</option>
+                <option value="Delete">Delete</option>
+                <!-- <option value="Male"></option> -->
+            </select>
+        </div>
+        
+        <button type="submit" name="education-submit" class="">UPDATE EDUCATION</button>
+        
+    </form>
+
+<h1>FIND MENTOR</h1>
+{% if mentor%}
+<table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">EID</th>
+        <th scope="col">UserID</th>
+        <th scope="col">Research Fields</th>
+        <th scope="col">Vacancy</th>
+        <th scope="col">Department</th>
+        <th scope="col">Lab</th>
+        <th scope="col">H-index</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in mentor: %}
+
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td>{{row[6]}}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    <!-- {{mentor}} -->
+{% endif %}
+<form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+    <div class="input-field">
+        <input type="number" name="Mentor-Project" id="projectID" placeholder="projectID">
+    </div>
+    <button type="submit" name="mentors-submits" class="">SEE MENTORS</button>
+</form>
+<h1>ADD PROJECT</h1>
+<form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+    <div class="input-field">
+        <input type="text" name="EmployeeId" id="EmployeeId" placeholder="EmployeeId">
+        <input type="number" name="AprojectID" id="projectID" placeholder="projectID" class="ml-3">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Title" id="Title" placeholder="Title">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Duration" id="Duration" placeholder="Duration">
+        <input type="text" name="StartDate" id="StartDate" placeholder="StartDate" class="mx-3">
+        <input type="text" name="EndDate" id="EndDate" placeholder="EndDate">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Field" id="Field" placeholder="Field">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Domain" id="Domain" placeholder="Domain">
+    </div>
+    <button type="submit" name="addProject-submit" class="">ADD PROJECT</button>
+    <!-- Insert into “Project” (‘Title’, ‘MentorId’, ‘Duration’, ‘StartDate’, ‘EndDate’, ‘Field’, ‘Domain’) values ({Title}, {EmployeeId}, {Duration}, {StartDate},{EndDate}, {Field}, {Domain}) -->
+</form>
+<h1 class="mb-4">See details of students under a project</h1>
+
+{% if projectsUnderStudents %}
+<table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">RollNo</th>
+        <th scope="col">UserID</th>
+        <th scope="col">ParentId</th>
+        <th scope="col">Degree</th>
+        <th scope="col">Batch</th>
+        <th scope="col">Major</th>
+        <th scope="col">GPA</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in projectsUnderStudents: %}
+
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td>{{row[6]}}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if studentWorkingProjects %}
+<table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ProjectId</th>
+        <th scope="col">Title</th>
+        <th scope="col">MentorId</th>
+        <th scope="col">StartDate</th>
+        <th scope="col">EndDate</th>
+        <th scope="col">Field</th>
+        <th scope="col">Domain</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in studentWorkingProjects: %}
+
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+            <td>{{row[6]}}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+    <!-- {{projectsUnderStudents}} -->
+    <div class="input-field">
+        <input type="number" name="projectID" id="projectID" placeholder="students working on the given projectID">
+    </div>
+    {{studentGPA}}
+    <div class="input-field">
+        <input type="number" name="rollnoGPA" id="rollno" placeholder="student rollno to search GPA">
+    </div>
+    <!-- {{studentWorkingProjects}} -->
+    <div class="input-field">
+        <input type="number" name="rollnoPID" id="rollno" placeholder="student rollno to see projects he is working on">
+    </div>
+    
+    <button type="submit" name="project_underStudent" class="">SHOW DETAILS</button>
+</form>
+<h1>Assign student to project</h1>
+<form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+    <div class="input-field">
+        <input type="number" name="rollno" id="rollno" placeholder="rollno">
+        <input type="number" name="projectID" id="projectID" placeholder="PROJECT ID" class="ml-3">
+    </div>
+    <button type="submit" name="assignStudent" class="">Assign Student</button>
+</form>
+</div>
+
+{% endblock %}

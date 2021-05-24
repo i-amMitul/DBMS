@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Update</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Add</a>
+    </li>
+  </ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                {% for i in students_headers %}
+                    <th scope="col">{{i}}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+                {% for i in students %}
+                <tr>
+                    {% for j in i %}
+                        <td>{{j}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="container">
+            <h1>Update batch</h1>
+            <form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+                <div class="input-field">
+                    <select name="rollNo" id="" class = "form-control mb-2 mr-sm-2" >
+                        {% for roll in roll_numbers %}
+                        <option value="{{roll}}">{{roll}}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- <input type="number" name="RollNo" id="RollNo" placeholder="RollNo of Student"> -->
+                </div>
+                <div class="input-field">
+                    <input type="text" class = "form-control mb-2 mr-sm-2" name = "batch" placeholder = "Batch">
+                </div>
+                <button type="submit" name="Batch" class="btn btn-primary">Update</button>
+            </form>        
+        </div>
+
+        <div class="container">
+            <h1>Update Parent</h1>
+            <form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+                <div class="input-field">
+                    <select name="rollNo" id="" class = "form-control mb-2 mr-sm-2" >
+                        {% for roll in roll_numbers %}
+                            <option value="{{roll}}">{{roll}}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- <input type="number" name="RollNo" id="RollNo" placeholder="RollNo of Student"> -->
+                </div>
+                <div class="input-field">
+                    <select name="parentId" id="" class = "form-control mb-2 mr-sm-2" >
+                        {% for roll in parentIds %}
+                            <option value="{{roll}}">{{roll}}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- <input type="text" class = "form-control mb-2 mr-sm-2" name = "batch" placeholder = "Batch"> -->
+                </div>
+                <button type="submit" name="ParentId" class="btn btn-primary">Update</button>
+            </form>        
+        </div>
+        
+        <div class="container">
+            <h1>Update Password</h1>
+            <form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+                <div class="input-field">
+                    <select name="EmailID" id="" class = "form-control mb-2 mr-sm-2" >
+                        {% for roll in emailids %}
+                            <option value="{{roll}}">{{roll}}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- <input type="number" name="RollNo" id="RollNo" placeholder="RollNo of Student"> -->
+                </div>
+                <div class="input-field">
+                    <input type="text" name="password" placeholder = "Password">
+                    <!-- <input type="text" class = "form-control mb-2 mr-sm-2" name = "batch" placeholder = "Batch"> -->
+                </div>
+                <button type="submit" name="Password" class="btn btn-primary">Update</button>
+            </form>        
+        </div>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+
+    </div>
+</div>
+{% endblock %}

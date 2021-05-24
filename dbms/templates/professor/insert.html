@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2> Prof Quries</h2>
+<h1>UPDATE EDUCATION</h1>
+<div class="container">
+
+    <form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+        <div class="input-field">
+            <input type="number" name="professorID" id="professorID" placeholder="professorID">
+            <input type="number" name="educationID" id="educationID" placeholder="educationID" class="mx-3">
+            <select name="operation" id="operation">
+                <!-- <option value="">designation</option> -->
+                <option value="Insert">Insert</option>
+                <option value="Update">Update</option>
+                <option value="Delete">Delete</option>
+                <!-- <option value="Male"></option> -->
+            </select>
+        </div>
+        
+        <button type="submit" name="education-submit" class="">UPDATE EDUCATION</button>
+        
+    </form>
+
+<h1>ADD PROJECT</h1>
+<form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+    <div class="input-field">
+        <input type="text" name="EmployeeId" id="EmployeeId" placeholder="EmployeeId">
+        <input type="number" name="AprojectID" id="projectID" placeholder="projectID" class="ml-3">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Title" id="Title" placeholder="Title">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Duration" id="Duration" placeholder="Duration">
+        <input type="text" name="StartDate" id="StartDate" placeholder="StartDate" class="mx-3">
+        <input type="text" name="EndDate" id="EndDate" placeholder="EndDate">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Field" id="Field" placeholder="Field">
+    </div>
+    <div class="input-field">
+        <input type="text" name="Domain" id="Domain" placeholder="Domain">
+    </div>
+    <button type="submit" name="addProject-submit" class="">ADD PROJECT</button>
+    <!-- Insert into “Project” (‘Title’, ‘MentorId’, ‘Duration’, ‘StartDate’, ‘EndDate’, ‘Field’, ‘Domain’) values ({Title}, {EmployeeId}, {Duration}, {StartDate},{EndDate}, {Field}, {Domain}) -->
+</form>
+
+<h1>Assign student to project</h1>
+<form action="" method="POST" style="width: 50%;margin: 30px auto 50px auto;">
+    <div class="input-field">
+        <input type="number" name="rollno" id="rollno" placeholder="rollno">
+        <input type="number" name="projectID" id="projectID" placeholder="PROJECT ID" class="ml-3">
+    </div>
+    <button type="submit" name="assignStudent" class="">Assign Student</button>
+</form>
+</div>
+
+{% endblock %}

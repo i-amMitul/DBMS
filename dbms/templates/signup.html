@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="form.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>signup</title>
+    
+</head>
+<body>
+    <div class="container">
+
+
+    <h1>Sign Up</h1>
+
+    <form method="POST" >
+        {{form.hidden_tag()}}
+        <div class="row">
+            <h3>Add Task</h3>
+            <div class="col">
+                {{form.name(class="form-control")}}
+            </div>
+            <div class="col">
+                {{form.submit(class="btn btn-primary")}}
+            </div>
+        </div>
+    </form>
+
+
+    <form method="POST">
+        <select name = "something">
+            <option value="a">sdfs</option>
+            <option value="b">sdf</option>
+            <option value="c">werwe</option>
+        </select>
+        <button type= "submit">Search </button>
+    </form>
+
+    
+    <form method="POST">
+        <div class="input-field">
+            <i class='bx bxs-user' ></i>
+            <input type="text" name="name" id="name" placeholder="Full Name">
+            
+        </div>
+        
+        <div class="input-field">
+            <i class='bx bxs-user' ></i>
+            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="number" name="phone" id="phone" placeholder="phone" style="margin-left: 15px;width: 70%;">
+        </div>
+        
+        <div class="input-field">
+            
+            
+            <!-- Boiler Plate -->
+            
+            <select name="designation" id="designation">
+                <!-- <option value="">designation</option> -->
+                <option value="Professor">Professor</option>
+                <option value="Student">Student</option>
+                <option value="Academics">Academics</option>
+                <!-- <option value="Male"></option> -->
+            </select>
+
+            <!--  -->
+
+
+            <select name="gender" id="gender">
+                <option value="">Gender</option>
+                {% for i in genders %}
+                <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+                <!-- <option value="Female">Female</option>
+                <option value="other">other</option> -->
+            </select>
+            <input type="number" name="age" id="age" placeholder="age" style="width: 100%;">
+            
+            
+        </div>
+
+        <div class="input-field">
+            <i class='bx bxs-key' ></i>
+            <input type="password" name="password" id="password" placeholder="password">
+        </div>
+        <button type="submit">SignUp!</button>
+    </form>
+
+
+</div>
+
+{{name}}
+{{form}}
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+    </li>
+</ul>
+<div class="tab-content mt-5" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+        <h1> Your Child(ren)'s Achievements</h1>
+        
+        <div class="table-responsive shadow rounded">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Roll Number</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Techincal</th>
+                    <th scope="col">Verified</th>
+                    <th scope="col">Institution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for row in achievements %}
+                    <tr>
+                            {% for col in row %}
+                                <!-- <th scope="row">1</th> -->
+                                <td>{{col}}</td>
+                            {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade mt-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="table-responsive shadow rounded">
+            <table class="table">
+                <tbody>
+                    {% for k,v in user.items() %}
+                    <tr>                    
+                            <th>{{k}}</th>
+                            <td>{{v}}</td>    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+
+{% endblock %}
